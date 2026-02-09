@@ -8,33 +8,35 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-white/95 border-b border-gray-100">
       <div className="container">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary">
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
             Netblade Consulting
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary transition">
+            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group">
               Home
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
             {/* About Us Dropdown */}
             <div className="relative group">
-              <button className="text-gray-700 hover:text-primary transition flex items-center">
+              <button className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center relative">
                 About Us
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </button>
-              <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link href="/about" className="block px-4 py-3 hover:bg-gray-50">About Netblade Consulting</Link>
-                <Link href="/about/vision-mission" className="block px-4 py-3 hover:bg-gray-50">Our Vision & Mission</Link>
-                <Link href="/about/approach" className="block px-4 py-3 hover:bg-gray-50">Our Approach</Link>
-                <Link href="/about/why-choose-us" className="block px-4 py-3 hover:bg-gray-50">Why Choose Us</Link>
+              <div className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-gray-100">
+                <Link href="/about" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200 first:rounded-t-xl">About Netblade Consulting</Link>
+                <Link href="/about/vision-mission" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200">Our Vision & Mission</Link>
+                <Link href="/about/approach" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200">Our Approach</Link>
+                <Link href="/about/why-choose-us" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200 last:rounded-b-xl">Why Choose Us</Link>
               </div>
             </div>
 
@@ -98,11 +100,11 @@ export default function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link href="/contact#consultation" className="btn-primary">
-              Book Free Consultation
+            <Link href="/contact#consultation" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+              📞 Free Consultation
             </Link>
-            <Link href="/contact#quote" className="btn-secondary">
-              Get a Quote
+            <Link href="/contact#quote" className="border-2 border-blue-600 text-blue-600 px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300">
+              Get Quote
             </Link>
           </div>
 
