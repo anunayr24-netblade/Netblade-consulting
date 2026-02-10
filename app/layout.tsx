@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Netblade Consulting - Technology, Marketing & Financial Services",
   description: "Expert Website Development, Digital Marketing, and Financial Services for startups and growing businesses. One-stop solution for digital and financial needs.",
-  keywords: "website development, digital marketing, financial services, SEO, social media marketing, stock market education",
+  keywords: "website development, digital marketing, financial services, SEO, social media marketing, business registration, GST, ITR, compliance",
 };
 
 export default function RootLayout({

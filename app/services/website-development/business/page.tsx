@@ -1,24 +1,214 @@
+'use client'
+
 import Link from 'next/link'
+import { useState, useEffect, useRef } from 'react'
 
 export default function BusinessWebsitePage() {
+  const [flippedCards, setFlippedCards] = useState<{ [key: string]: boolean }>({})
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [statsVisible, setStatsVisible] = useState(false)
+  const [counters, setCounters] = useState({ projects: 0, clients: 0, satisfaction: 0, uptime: 0 })
+  const statsRef = useRef<HTMLDivElement>(null)
+
+  const toggleFlip = (cardId: string) => {
+    setFlippedCards(prev => ({ ...prev, [cardId]: !prev[cardId] }))
+  }
+
+  const testimonials = [
+    { name: "Manish Agarwal", business: "Consulting Firm", text: "Professional website that perfectly represents our brand. Leads increased by 300%!" },
+    { name: "Sanjay Reddy", business: "Manufacturing Co.", text: "Fast, responsive, easy to update. Best investment for our business!" },
+    { name: "Preeti Menon", business: "Healthcare Startup", text: "Modern design with all features we needed. Patients love the appointment booking!" },
+    { name: "Kunal Sharma", business: "Financial Services", text: "SEO-friendly website brought us to top of Google. Great work!" }
+  ]
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    document.querySelectorAll('.fade-on-scroll').forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  // Stats counter animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !statsVisible) {
+          setStatsVisible(true)
+          animateCounters()
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (statsRef.current) observer.observe(statsRef.current)
+    return () => observer.disconnect()
+  }, [statsVisible])
+
+  const animateCounters = () => {
+    const duration = 2000
+    const steps = 60
+    const increment = {
+      projects: 250 / steps,
+      clients: 180 / steps,
+      satisfaction: 98 / steps,
+      uptime: 99.9 / steps
+    }
+
+    let step = 0
+    const timer = setInterval(() => {
+      step++
+      setCounters({
+        projects: Math.min(Math.floor(increment.projects * step), 250),
+        clients: Math.min(Math.floor(increment.clients * step), 180),
+        satisfaction: Math.min((increment.satisfaction * step), 98),
+        uptime: Math.min((increment.uptime * step), 99.9)
+      })
+      if (step >= steps) clearInterval(timer)
+    }, duration / steps)
+  }
+
   return (
     <div>
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
+        }
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-slide-in {
+          animation: slideIn 0.8s ease-out forwards;
+        }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulse 3s ease-in-out infinite;
+        }
+        .fade-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s ease-out;
+        }
+        .badge-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        .badge-float:nth-child(2) {
+          animation-delay: 0.5s;
+        }
+        .badge-float:nth-child(3) {
+          animation-delay: 1s;
+        }
+        .gradient-animated {
+          background: linear-gradient(-45deg, #1e40af, #1e3a8a, #1e293b, #0f172a);
+          background-size: 400% 400%;
+          animation: gradientShift 15s ease infinite;
+        }
+        .card-hover {
+          transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+          transform: translateY(-5px);
+        }
+      `}</style>
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24 overflow-hidden">
+      <section className="relative text-white py-32 overflow-hidden">
         <div 
-          className="absolute inset-0 opacity-20 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center animate-pulse-slow"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1920&q=80')" }}
         ></div>
+        <div className="absolute inset-0 gradient-animated opacity-85"></div>
         <div className="container relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Website Development Services</h1>
-          <p className="text-xl drop-shadow-md">Build a Powerful Digital Presence That Works for Your Business</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl text-white animate-fade-in">
+            Website Development Services
+          </h1>
+          <p className="text-xl md:text-2xl drop-shadow-xl text-blue-100 font-medium animate-slide-in" style={{ animationDelay: '0.2s' }}>
+            Build a Powerful Digital Presence That Works for Your Business
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
+              <span className="font-semibold text-white">✓ Custom Development</span>
+            </div>
+            <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
+              <span className="font-semibold text-white">✓ Mobile Responsive</span>
+            </div>
+            <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
+              <span className="font-semibold text-white">✓ SEO Optimized</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Animated Stats Counter Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+        <div className="container relative z-10" ref={statsRef}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div className="fade-on-scroll">
+              <div className="text-5xl font-bold mb-2">{counters.projects}+</div>
+              <div className="text-blue-100 text-lg">Projects Delivered</div>
+            </div>
+            <div className="fade-on-scroll" style={{ transitionDelay: '0.1s' }}>
+              <div className="text-5xl font-bold mb-2">{counters.clients}+</div>
+              <div className="text-blue-100 text-lg">Happy Clients</div>
+            </div>
+            <div className="fade-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <div className="text-5xl font-bold mb-2">{counters.satisfaction.toFixed(0)}%</div>
+              <div className="text-blue-100 text-lg">Client Satisfaction</div>
+            </div>
+            <div className="fade-on-scroll" style={{ transitionDelay: '0.3s' }}>
+              <div className="text-5xl font-bold mb-2">{counters.uptime.toFixed(1)}%</div>
+              <div className="text-blue-100 text-lg">Uptime Guarantee</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
       <section className="py-16">
         <div className="container max-w-5xl">
-          <div className="mb-12">
+          <div className="mb-12 fade-on-scroll">
             <h2 className="text-3xl font-bold mb-6">Build a Powerful Online Presence</h2>
             <p className="text-lg text-gray-700 mb-4">
               In today&apos;s digital-first world, your website is more than just an online address — it is your 
@@ -34,88 +224,364 @@ export default function BusinessWebsitePage() {
             </p>
           </div>
 
+          {/* Testimonials Carousel */}
+          <div className="mb-16 fade-on-scroll">
+            <div className="bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-blue-300 rounded-full blur-3xl opacity-50 animate-float"></div>
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-400 rounded-full blur-3xl opacity-50 animate-float" style={{ animationDelay: '1.5s' }}></div>
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">What Our Clients Say</h3>
+                <div className="transition-all duration-500 ease-in-out">
+                  <div className="text-center">
+                    <p className="text-gray-700 text-lg italic mb-4 min-h-[80px] flex items-center justify-center px-4">
+                      &quot;{testimonials[currentTestimonial].text}&quot;
+                    </p>
+                    <p className="font-bold text-blue-700">{testimonials[currentTestimonial].name}</p>
+                    <p className="text-sm text-gray-600">{testimonials[currentTestimonial].business}</p>
+                  </div>
+                </div>
+                
+                <div className="flex justify-center gap-2 mt-6">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial ? 'bg-blue-600 w-8' : 'bg-blue-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Services Offered */}
-          <div className="mb-12">
+          <div className="mb-12 fade-on-scroll">
             <h3 className="text-2xl font-bold mb-6">🚀 Our Website Development Solutions</h3>
             
-            <div className="mb-8 bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg">
-              <h4 className="font-bold text-xl mb-3">✅ Business & Corporate Websites</h4>
-              <p className="text-gray-700 mb-3">
-                Professional websites designed to establish trust, showcase services, and generate inquiries.
-              </p>
-              <p className="font-semibold mb-2">Ideal for:</p>
-              <ul className="list-disc list-inside text-gray-700 mb-3 ml-4">
-                <li>Companies & startups</li>
-                <li>Consultants & service providers</li>
-                <li>Local businesses</li>
-              </ul>
-              <p className="font-semibold mb-2">Features:</p>
-              <ul className="list-disc list-inside text-gray-700 ml-4">
-                <li>Clean & modern UI</li>
-                <li>Mobile & tablet responsive</li>
-                <li>SEO-ready structure</li>
-                <li>Contact & lead forms</li>
-              </ul>
-            </div>
+            {/* Grid layout for cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Business & Corporate Websites Card */}
+              <div 
+                className="relative h-[450px] cursor-pointer"
+                style={{ perspective: '1000px' }}
+                onMouseEnter={() => setFlippedCards({ 'business-corporate': true })}
+                onMouseLeave={() => setFlippedCards({})}
+              >
+                <div 
+                  className="relative w-full h-full transition-transform duration-700"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    transform: flippedCards['business-corporate'] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  }}
+                >
+                  {/* Front Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-lg shadow-md hover:shadow-xl"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">✅ Business & Corporate Websites</h4>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      Professional websites designed to establish trust, showcase services, and generate inquiries.
+                    </p>
+                    <p className="font-semibold mb-2">Ideal for:</p>
+                    <ul className="list-disc list-inside text-gray-700 mb-3 ml-4 text-sm">
+                      <li>Companies & startups</li>
+                      <li>Consultants & service providers</li>
+                      <li>Local businesses</li>
+                    </ul>
+                    <p className="font-semibold mb-2">Features:</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4 text-sm">
+                      <li>Clean & modern UI</li>
+                      <li>Mobile & tablet responsive</li>
+                      <li>SEO-ready structure</li>
+                      <li>Contact & lead forms</li>
+                    </ul>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-blue-600 text-white px-3 py-1 rounded-full shadow-md">More details</span>
+                    </div>
+                  </div>
+                  
+                  {/* Back Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-br from-blue-600 to-blue-800 text-white p-6 rounded-lg shadow-xl"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">💡 Why Choose Us</h4>
+                    <div className="space-y-3 text-sm overflow-y-auto h-[360px]">
+                      <div>
+                        <p className="font-semibold mb-1">🎯 Brand-Focused Design:</p>
+                        <p className="text-white/90">We create websites that reflect your brand identity, values, and professionalism, helping you stand out from competitors.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📱 Mobile-First Approach:</p>
+                        <p className="text-white/90">Over 60% of users browse on mobile. We ensure your site looks perfect on every device, delivering seamless experience.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔍 SEO Optimized:</p>
+                        <p className="text-white/90">Built with clean code, fast loading, and proper structure to rank higher on Google and attract organic traffic.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">💼 Lead Generation:</p>
+                        <p className="text-white/90">Strategic placement of contact forms, CTAs, and trust signals to convert visitors into customers.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">⚡ Fast Performance:</p>
+                        <p className="text-white/90">Optimized images, lazy loading, and caching ensure lightning-fast page loads for better user retention.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔒 Secure & Reliable:</p>
+                        <p className="text-white/90">SSL certificates, regular backups, and security best practices to protect your business and customer data.</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">← Back</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="mb-8 bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg">
-              <h4 className="font-bold text-xl mb-3">✅ Real Estate Websites</h4>
-              <p className="text-gray-700 mb-3">
-                Property listing websites with advanced search, filters, and lead capture systems.
-              </p>
-              <p className="font-semibold mb-2">Ideal for:</p>
-              <ul className="list-disc list-inside text-gray-700 mb-3 ml-4">
-                <li>Real estate agents & brokers</li>
-                <li>Property developers</li>
-                <li>Rental & leasing businesses</li>
-              </ul>
-              <p className="font-semibold mb-2">Features:</p>
-              <ul className="list-disc list-inside text-gray-700 ml-4">
-                <li>Property listing management</li>
-                <li>Search & filter functionality</li>
-                <li>Lead capture forms</li>
-                <li>Image galleries & virtual tours</li>
-              </ul>
-            </div>
+              {/* Real Estate Websites Card */}
+              <div 
+                className="relative h-[450px] cursor-pointer"
+                style={{ perspective: '1000px' }}
+                onMouseEnter={() => setFlippedCards({ 'real-estate': true })}
+                onMouseLeave={() => setFlippedCards({})}
+              >
+                <div 
+                  className="relative w-full h-full transition-transform duration-700"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    transform: flippedCards['real-estate'] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  }}
+                >
+                  {/* Front Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg shadow-md hover:shadow-xl"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">✅ Real Estate Websites</h4>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      Property listing websites with advanced search, filters, and lead capture systems.
+                    </p>
+                    <p className="font-semibold mb-2">Ideal for:</p>
+                    <ul className="list-disc list-inside text-gray-700 mb-3 ml-4 text-sm">
+                      <li>Real estate agents & brokers</li>
+                      <li>Property developers</li>
+                      <li>Rental & leasing businesses</li>
+                    </ul>
+                    <p className="font-semibold mb-2">Features:</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4 text-sm">
+                      <li>Property listing management</li>
+                      <li>Search & filter functionality</li>
+                      <li>Lead capture forms</li>
+                      <li>Image galleries & virtual tours</li>
+                    </ul>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-green-600 text-white px-3 py-1 rounded-full shadow-md">More details</span>
+                    </div>
+                  </div>
+                  
+                  {/* Back Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-br from-green-600 to-green-800 text-white p-6 rounded-lg shadow-xl"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">💡 Why Choose Us</h4>
+                    <div className="space-y-3 text-sm overflow-y-auto h-[360px]">
+                      <div>
+                        <p className="font-semibold mb-1">🏘️ Property Showcase:</p>
+                        <p className="text-white/90">Beautiful image galleries, virtual tours, and detailed property descriptions that sell properties faster.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔍 Advanced Search:</p>
+                        <p className="text-white/90">Filter by location, price, size, amenities - help buyers find their dream property in seconds.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📲 Lead Capture:</p>
+                        <p className="text-white/90">Contact forms, inquiry buttons, and WhatsApp integration to capture every potential buyer's information.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📊 Easy Management:</p>
+                        <p className="text-white/90">Admin panel to add, edit, delete property listings with ease - no technical knowledge required.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🗺️ Map Integration:</p>
+                        <p className="text-white/90">Google Maps showing exact property locations, nearby amenities, and neighborhood insights.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">💼 Agent Profiles:</p>
+                        <p className="text-white/90">Showcase your team with professional profiles and direct contact options for each agent.</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">← Back</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="mb-8 bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg">
-              <h4 className="font-bold text-xl mb-3">✅ WordPress Development</h4>
-              <p className="text-gray-700 mb-3">
-                Flexible, easy-to-manage websites using the world&apos;s most popular CMS platform.
-              </p>
-              <p className="font-semibold mb-2">Ideal for:</p>
-              <ul className="list-disc list-inside text-gray-700 mb-3 ml-4">
-                <li>Blogs & content sites</li>
-                <li>E-commerce stores</li>
-                <li>Business websites with frequent updates</li>
-              </ul>
-              <p className="font-semibold mb-2">Features:</p>
-              <ul className="list-disc list-inside text-gray-700 ml-4">
-                <li>User-friendly admin panel</li>
-                <li>Custom theme development</li>
-                <li>Plugin integration</li>
-                <li>Regular updates & maintenance</li>
-              </ul>
-            </div>
+              {/* WordPress Development Card */}
+              <div 
+                className="relative h-[450px] cursor-pointer"
+                style={{ perspective: '1000px' }}
+                onMouseEnter={() => setFlippedCards({ 'wordpress': true })}
+                onMouseLeave={() => setFlippedCards({})}
+              >
+                <div 
+                  className="relative w-full h-full transition-transform duration-700"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    transform: flippedCards['wordpress'] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  }}
+                >
+                  {/* Front Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg shadow-md hover:shadow-xl"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">✅ WordPress Development</h4>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      Flexible, easy-to-manage websites using the world&apos;s most popular CMS platform.
+                    </p>
+                    <p className="font-semibold mb-2">Ideal for:</p>
+                    <ul className="list-disc list-inside text-gray-700 mb-3 ml-4 text-sm">
+                      <li>Blogs & content sites</li>
+                      <li>E-commerce stores</li>
+                      <li>Business websites with frequent updates</li>
+                    </ul>
+                    <p className="font-semibold mb-2">Features:</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4 text-sm">
+                      <li>User-friendly admin panel</li>
+                      <li>Custom theme development</li>
+                      <li>Plugin integration</li>
+                      <li>Regular updates & maintenance</li>
+                    </ul>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-purple-600 text-white px-3 py-1 rounded-full shadow-md">More details</span>
+                    </div>
+                  </div>
+                  
+                  {/* Back Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-br from-purple-600 to-purple-800 text-white p-6 rounded-lg shadow-xl"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">💡 Why Choose Us</h4>
+                    <div className="space-y-3 text-sm overflow-y-auto h-[360px]">
+                      <div>
+                        <p className="font-semibold mb-1">✏️ Easy to Update:</p>
+                        <p className="text-white/90">Update content, add pages, upload images without touching code. Perfect for non-technical users.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🎨 Custom Design:</p>
+                        <p className="text-white/90">We build custom themes matching your brand - not generic templates that look like everyone else's.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔌 Plugin Power:</p>
+                        <p className="text-white/90">Integrate contact forms, SEO tools, analytics, security, and thousands of features through plugins.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🛒 E-commerce Ready:</p>
+                        <p className="text-white/90">Add WooCommerce for online store, payment gateways, inventory management, and order tracking.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📈 SEO Friendly:</p>
+                        <p className="text-white/90">WordPress is loved by search engines. We optimize it further with proper structure and SEO plugins.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔄 Regular Updates:</p>
+                        <p className="text-white/90">We keep your WordPress, themes, and plugins updated for security, performance, and new features.</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">← Back</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="mb-8 bg-gradient-to-r from-orange-50 to-orange-100 p-6 rounded-lg">
-              <h4 className="font-bold text-xl mb-3">✅ Static & Dynamic Websites</h4>
-              <p className="text-gray-700 mb-3">
-                Choose between lightning-fast static sites or feature-rich database-driven dynamic websites.
-              </p>
-              <p className="font-semibold mb-2">Ideal for:</p>
-              <ul className="list-disc list-inside text-gray-700 mb-3 ml-4">
-                <li>Portfolio & brochure websites (Static)</li>
-                <li>Web applications & portals (Dynamic)</li>
-                <li>E-commerce & membership sites (Dynamic)</li>
-              </ul>
-              <p className="font-semibold mb-2">Features:</p>
-              <ul className="list-disc list-inside text-gray-700 ml-4">
-                <li>Optimized performance</li>
-                <li>Scalable architecture</li>
-                <li>Database integration (Dynamic)</li>
-                <li>API integration capabilities</li>
-              </ul>
+              {/* Static & Dynamic Websites Card */}
+              <div 
+                className="relative h-[450px] cursor-pointer"
+                style={{ perspective: '1000px' }}
+                onMouseEnter={() => setFlippedCards({ 'static-dynamic': true })}
+                onMouseLeave={() => setFlippedCards({})}
+              >
+                <div 
+                  className="relative w-full h-full transition-transform duration-700"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    transform: flippedCards['static-dynamic'] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  }}
+                >
+                  {/* Front Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-r from-orange-50 to-orange-100 p-6 rounded-lg shadow-md hover:shadow-xl"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">✅ Static & Dynamic Websites</h4>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      Choose between lightning-fast static sites or feature-rich database-driven dynamic websites.
+                    </p>
+                    <p className="font-semibold mb-2">Ideal for:</p>
+                    <ul className="list-disc list-inside text-gray-700 mb-3 ml-4 text-sm">
+                      <li>Portfolio & brochure websites (Static)</li>
+                      <li>Web applications & portals (Dynamic)</li>
+                      <li>E-commerce & membership sites (Dynamic)</li>
+                    </ul>
+                    <p className="font-semibold mb-2">Features:</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4 text-sm">
+                      <li>Optimized performance</li>
+                      <li>Scalable architecture</li>
+                      <li>Database integration (Dynamic)</li>
+                      <li>API integration capabilities</li>
+                    </ul>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-orange-600 text-white px-3 py-1 rounded-full shadow-md">More details</span>
+                    </div>
+                  </div>
+                  
+                  {/* Back Side */}
+                  <div 
+                    className="absolute w-full h-full bg-gradient-to-br from-orange-600 to-orange-800 text-white p-6 rounded-lg shadow-xl"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <h4 className="font-bold text-xl mb-3">💡 Why Choose Us</h4>
+                    <div className="space-y-3 text-sm overflow-y-auto h-[360px]">
+                      <div>
+                        <p className="font-semibold mb-1">⚡ Static Sites (Next.js, React):</p>
+                        <p className="text-white/90">Lightning-fast loading, superior SEO, maximum security. Perfect for portfolios, landing pages, and brochure sites.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🚀 Dynamic Sites (Node.js, PHP):</p>
+                        <p className="text-white/90">Database-driven with user authentication, dashboards, real-time updates. Ideal for web apps and portals.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📊 Database Integration:</p>
+                        <p className="text-white/90">MySQL, MongoDB, PostgreSQL - store and manage data efficiently with proper structure and security.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">🔗 API Development:</p>
+                        <p className="text-white/90">RESTful APIs to connect your website with mobile apps, third-party services, and external systems.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">👥 User Management:</p>
+                        <p className="text-white/90">Registration, login, profiles, permissions - complete user management system customized to your needs.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold mb-1">📈 Scalable Architecture:</p>
+                        <p className="text-white/90">Built to grow with your business - handle increasing traffic and features without performance issues.</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">← Back</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -251,15 +717,19 @@ export default function BusinessWebsitePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="container text-center">
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+        <div className="container text-center relative z-10">
           <h2 className="text-3xl font-bold mb-6">Ready to Build Your Business Website?</h2>
-          <p className="text-xl mb-8">Let's create a powerful online presence for your business</p>
+          <p className="text-xl mb-8">Let&apos;s create a powerful online presence for your business</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+            <Link href="/contact" className="bg-white text-blue-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl">
               Get Started Today
             </Link>
-            <Link href="/contact#quote" className="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+            <Link href="/contact#quote" className="btn-primary text-lg px-8 py-4 transition-all duration-300 hover:scale-110 hover:shadow-2xl">
               Request a Quote
             </Link>
           </div>

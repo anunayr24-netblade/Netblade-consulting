@@ -66,11 +66,13 @@ export default function Navbar() {
                   </div>
                   <div>
                     <h3 className="font-bold text-primary px-3 py-2">Financial Services</h3>
-                    <Link href="/services/financial/stock-market-education" className="block px-4 py-2 hover:bg-gray-50 text-sm">Stock Market Education</Link>
-                    <Link href="/services/financial/trading-psychology" className="block px-4 py-2 hover:bg-gray-50 text-sm">Trading Psychology</Link>
-                    <Link href="/services/financial/investment-planning" className="block px-4 py-2 hover:bg-gray-50 text-sm">Investment Planning</Link>
-                    <Link href="/services/financial/gst-registration" className="block px-4 py-2 hover:bg-gray-50 text-sm">GST Registration</Link>
-                    <Link href="/services/financial/tax-filing" className="block px-4 py-2 hover:bg-gray-50 text-sm">Tax Filing Assistance</Link>
+                    <Link href="/services/financial/registrations" className="block px-4 py-2 hover:bg-gray-50 text-sm">Registrations</Link>
+                    <Link href="/services/financial/itr" className="block px-4 py-2 hover:bg-gray-50 text-sm">ITR</Link>
+                    <Link href="/services/financial/accounting-balance-sheet" className="block px-4 py-2 hover:bg-gray-50 text-sm">Accounting and Balance Sheet</Link>
+                    <Link href="/services/financial/dsc-trademark" className="block px-4 py-2 hover:bg-gray-50 text-sm">DSC and Trademark</Link>
+                    <Link href="/services/financial/gst-returns" className="block px-4 py-2 hover:bg-gray-50 text-sm">GST and GST Returns</Link>
+                    <Link href="/services/financial/compliances" className="block px-4 py-2 hover:bg-gray-50 text-sm">Compliances</Link>
+                    <Link href="/services/financial/loans-credit-cards" className="block px-4 py-2 hover:bg-gray-50 text-sm">Loans and Credit Cards</Link>
                   </div>
                 </div>
               </div>
@@ -87,7 +89,7 @@ export default function Navbar() {
               <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <Link href="/industries/startups" className="block px-4 py-3 hover:bg-gray-50">Startups & Small Businesses</Link>
                 <Link href="/industries/real-estate" className="block px-4 py-3 hover:bg-gray-50">Real Estate Professionals</Link>
-                <Link href="/industries/traders" className="block px-4 py-3 hover:bg-gray-50">Traders & Investors</Link>
+                <Link href="/industries/traders" className="block px-4 py-3 hover:bg-gray-50">Financial Professionals</Link>
                 <Link href="/industries/coaches" className="block px-4 py-3 hover:bg-gray-50">Coaches & Educators</Link>
                 <Link href="/industries/freelancers" className="block px-4 py-3 hover:bg-gray-50">Freelancers & Consultants</Link>
               </div>
@@ -130,7 +132,7 @@ export default function Navbar() {
             <Link href="/about" className="block py-2 text-gray-700 hover:text-primary">About Us</Link>
             <Link href="/services/website-development/business" className="block py-2 text-gray-700 hover:text-primary pl-4">Website Development</Link>
             <Link href="/services/digital-marketing/seo" className="block py-2 text-gray-700 hover:text-primary pl-4">Digital Marketing</Link>
-            <Link href="/services/financial/stock-market-education" className="block py-2 text-gray-700 hover:text-primary pl-4">Financial Services</Link>
+            <Link href="/services/financial/registrations" className="block py-2 text-gray-700 hover:text-primary pl-4">Financial Services</Link>
             <Link href="/industries/startups" className="block py-2 text-gray-700 hover:text-primary">Industries</Link>
             <Link href="/contact" className="block py-2 text-gray-700 hover:text-primary">Contact Us</Link>
             <div className="mt-4 space-y-2">

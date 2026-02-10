@@ -51,7 +51,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link href="/services/website-development/business" className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">→ Website Development</Link></li>
               <li><Link href="/services/digital-marketing/seo" className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">→ Digital Marketing</Link></li>
-              <li><Link href="/services/financial/gst-registration" className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">→ Financial Services</Link></li>
+              <li><Link href="/services/financial/registrations" className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block">→ Financial Services</Link></li>
             </ul>
           </div>
 

@@ -74,10 +74,22 @@ export default function HomePage() {
       description: 'Modern, secure, and conversion-focused websites tailored to your business goals'
     },
     {
-      src: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=1920&q=80',
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80',
+      alt: 'Team Collaboration',
+      title: 'Your Trusted Growth Partner',
+      description: 'Expert team dedicated to driving your business success with personalized solutions'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=80',
       alt: 'Digital Marketing',
       title: 'Grow Your Brand Online',
       description: 'Data-driven marketing strategies that attract and convert your target audience'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80',
+      alt: 'Business Analytics',
+      title: 'Data-Driven Decisions',
+      description: 'Transform insights into action with our comprehensive business analytics solutions'
     },
     {
       src: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=80',
@@ -86,18 +98,62 @@ export default function HomePage() {
       description: 'Expert guidance for business finance, GST, and tax compliance'
     },
     {
+      src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80',
+      alt: 'Modern Workspace',
+      title: 'Professional Excellence',
+      description: 'Delivering quality services with cutting-edge technology and industry expertise'
+    },
+    {
       src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80',
       alt: 'Business Growth',
       title: 'Scale Your Business',
       description: 'Integrated solutions for sustainable business growth and success'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&q=80',
+      alt: 'Success Strategy',
+      title: '360° Business Solutions',
+      description: 'Technology, marketing, and financial services working together for your success'
     }
   ]
 
   return (
     <div>
       {/* Hero Carousel Section */}
-      <section className="bg-gray-900 py-8">
-        <div className="container">
+      <section className="relative py-16 overflow-hidden">
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
+          <div className="absolute inset-0 opacity-30">
+            <motion.div 
+              className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"
+              animate={{ 
+                x: [0, 100, 0],
+                y: [0, 50, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute top-1/4 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
+              animate={{ 
+                x: [0, -80, 0],
+                y: [0, -60, 0],
+                scale: [1, 1.3, 1]
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+            <motion.div 
+              className="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-500 rounded-full blur-3xl"
+              animate={{ 
+                x: [0, -50, 0],
+                y: [0, 40, 0],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            />
+          </div>
+        </div>
+        <div className="container relative z-10">
           <Carousel images={carouselImages} />
         </div>
       </section>
@@ -180,42 +236,139 @@ export default function HomePage() {
       </section>
 
       {/* Why Netblade Consulting */}
-      <section ref={whyChooseRef} className="py-16 bg-gray-50">
-        <div className="container">
+      <section ref={whyChooseRef} className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute inset-0 opacity-30">
           <motion.div 
-            className="text-center mb-12"
+            className="absolute top-10 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute bottom-10 left-10 w-80 h-80 bg-purple-300 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+          />
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div 
+            className="text-center mb-16"
             initial="hidden"
             animate={whyChooseInView ? "visible" : "hidden"}
             variants={fadeInUp}
           >
-            <h2 className="section-title">Why Netblade Consulting?</h2>
-            <p className="section-subtitle">Your trusted partner for digital transformation and financial success</p>
+            <span className="inline-block px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-semibold mb-4 shadow-lg">THE NETBLADE ADVANTAGE</span>
+            <h2 className="section-title text-5xl md:text-6xl mb-6">Why Netblade Consulting?</h2>
+            <p className="section-subtitle text-xl max-w-3xl mx-auto">Your trusted partner for digital transformation and financial success — Where expertise meets innovation</p>
           </motion.div>
+
+          {/* Stats Bar */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-5xl mx-auto"
+            initial="hidden"
+            animate={whyChooseInView ? "visible" : "hidden"}
+            variants={staggerContainer}
+          >
+            <motion.div variants={scaleIn} className="text-center bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >500+</motion.div>
+              <div className="text-gray-600 font-semibold">Happy Clients</div>
+            </motion.div>
+            <motion.div variants={scaleIn} className="text-center bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+              >1000+</motion.div>
+              <div className="text-gray-600 font-semibold">Projects Done</div>
+            </motion.div>
+            <motion.div variants={scaleIn} className="text-center bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+              >99%</motion.div>
+              <div className="text-gray-600 font-semibold">Satisfaction</div>
+            </motion.div>
+            <motion.div variants={scaleIn} className="text-center bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+              >10+</motion.div>
+              <div className="text-gray-600 font-semibold">Years Exp.</div>
+            </motion.div>
+          </motion.div>
+
+          {/* Feature Cards */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             initial="hidden"
             animate={whyChooseInView ? "visible" : "hidden"}
             variants={staggerContainer}
           >
-            <motion.div variants={scaleIn} whileHover={{ y: -10, scale: 1.05 }} className="bg-white p-6 rounded-lg shadow-lg">
-              <motion.div className="text-4xl mb-4" animate={{ rotate: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>🎯</motion.div>
-              <h3 className="text-xl font-bold mb-3">One-Stop Solution</h3>
-              <p className="text-gray-600">All your digital & financial needs under one roof</p>
+            <motion.div 
+              variants={scaleIn} 
+              whileHover={{ y: -15, scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
+              className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-blue-500 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <motion.div 
+                className="text-5xl mb-6 relative z-10" 
+                animate={{ rotate: [0, 10, 0] }} 
+                transition={{ duration: 3, repeat: Infinity }}
+              >🎯</motion.div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 relative z-10">One-Stop Solution</h3>
+              <p className="text-gray-600 leading-relaxed relative z-10">Website development, digital marketing, and financial compliance — all expertly managed under one roof for seamless coordination</p>
             </motion.div>
-            <motion.div variants={scaleIn} whileHover={{ y: -10, scale: 1.05 }} className="bg-white p-6 rounded-lg shadow-lg">
-              <motion.div className="text-4xl mb-4" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>📊</motion.div>
-              <h3 className="text-xl font-bold mb-3">Data-Driven Approach</h3>
-              <p className="text-gray-600">Compliance-focused and analytics-based decisions</p>
+
+            <motion.div 
+              variants={scaleIn} 
+              whileHover={{ y: -15, scale: 1.05, boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)" }}
+              className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-green-500 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <motion.div 
+                className="text-5xl mb-6 relative z-10" 
+                animate={{ scale: [1, 1.2, 1] }} 
+                transition={{ duration: 3, repeat: Infinity }}
+              >📊</motion.div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 relative z-10">Result-Driven</h3>
+              <p className="text-gray-600 leading-relaxed relative z-10">Data-backed strategies with measurable ROI. Every decision is compliance-focused and analytics-based for guaranteed success</p>
             </motion.div>
-            <motion.div variants={scaleIn} whileHover={{ y: -10, scale: 1.05 }} className="bg-white p-6 rounded-lg shadow-lg">
-              <motion.div className="text-4xl mb-4" animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }}>💰</motion.div>
-              <h3 className="text-xl font-bold mb-3">Affordable & Scalable</h3>
-              <p className="text-gray-600">Transparent pricing that grows with your business</p>
+
+            <motion.div 
+              variants={scaleIn} 
+              whileHover={{ y: -15, scale: 1.05, boxShadow: "0 20px 40px rgba(249, 115, 22, 0.3)" }}
+              className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-500 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <motion.div 
+                className="text-5xl mb-6 relative z-10" 
+                animate={{ y: [0, -8, 0] }} 
+                transition={{ duration: 3, repeat: Infinity }}
+              >💰</motion.div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 relative z-10">Transparent Pricing</h3>
+              <p className="text-gray-600 leading-relaxed relative z-10">No hidden costs, no surprises. Affordable packages with clear pricing that scales as your business grows</p>
             </motion.div>
-            <motion.div variants={scaleIn} whileHover={{ y: -10, scale: 1.05 }} className="bg-white p-6 rounded-lg shadow-lg">
-              <motion.div className="text-4xl mb-4" animate={{ rotate: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>✨</motion.div>
-              <h3 className="text-xl font-bold mb-3">Personalized Strategies</h3>
-              <p className="text-gray-600">Custom solutions, not cookie-cutter templates</p>
+
+            <motion.div 
+              variants={scaleIn} 
+              whileHover={{ y: -15, scale: 1.05, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.3)" }}
+              className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-purple-500 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <motion.div 
+                className="text-5xl mb-6 relative z-10" 
+                animate={{ rotate: [0, -10, 0] }} 
+                transition={{ duration: 3, repeat: Infinity }}
+              >✨</motion.div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 relative z-10">Customized Strategy</h3>
+              <p className="text-gray-600 leading-relaxed relative z-10">Tailored solutions designed specifically for your industry, target audience, and business goals — never generic templates</p>
             </motion.div>
           </motion.div>
         </div>
@@ -235,265 +388,106 @@ export default function HomePage() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive solutions designed to power your growth and success</p>
           </motion.div>
 
-          {/* Website Development */}
+          {/* Services Grid - Horizontal Layout */}
           <motion.div 
-            className="mb-20"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
             animate={servicesInView ? "visible" : "hidden"}
-            variants={slideInLeft}
+            variants={staggerContainer}
           >
-            <motion.div 
-              className="bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-10 rounded-2xl shadow-xl border border-blue-200"
-              whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col md:flex-row items-center mb-6 gap-6">
+            {/* Website Development */}
+            <motion.div variants={scaleIn}>
+              <motion.div 
+                className="bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-8 rounded-2xl shadow-xl border border-blue-200 h-full flex flex-col"
+                whileHover={{ scale: 1.03, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <motion.img 
                   src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop&q=80" 
                   alt="Website Development" 
-                  className="w-full md:w-48 h-48 object-cover rounded-lg shadow-lg"
-                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  className="w-full h-48 object-cover rounded-lg shadow-lg mb-6"
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
-                <div>
-                  <h3 className="text-3xl font-bold text-gray-900">Website Development Services</h3>
-                  <p className="text-lg text-gray-700 mt-2">
-                    High-performance, secure, and conversion-focused websites built to scale
-                  </p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Website Development</h3>
+                <p className="text-gray-700 mb-4 flex-grow">
+                  High-performance, secure, and conversion-focused websites built to scale your business
+                </p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-sm text-gray-600">✓ Business & Corporate Websites</p>
+                  <p className="text-sm text-gray-600">✓ Real Estate Websites</p>
+                  <p className="text-sm text-gray-600">✓ WordPress Development</p>
+                  <p className="text-sm text-gray-600">✓ Website Redesign</p>
                 </div>
-              </div>
-              <p className="text-gray-700 mb-6">
-                In today&apos;s digital-first world, your website is more than just an online address — it is your 
-                brand identity, sales engine, and credibility builder. We design and develop websites tailored 
-                to your business goals.
-              </p>
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
-                initial="hidden"
-                animate={servicesInView ? "visible" : "hidden"}
-                variants={staggerContainer}
-              >
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Business & Corporate Websites</h4>
-                  <p className="text-sm text-gray-600">Professional sites for companies & consultants</p>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+                  <Link href="/services/website-development/business" className="inline-block btn-primary w-full text-center">
+                    Learn More →
+                  </Link>
                 </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Real Estate Websites</h4>
-                  <p className="text-sm text-gray-600">Property listings with lead generation</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ WordPress Development</h4>
-                  <p className="text-sm text-gray-600">Flexible, easy-to-manage websites</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Static & Dynamic Websites</h4>
-                  <p className="text-sm text-gray-600">Fast static or database-driven dynamic sites</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Website Redesign</h4>
-                  <p className="text-sm text-gray-600">Modernize & optimize existing sites</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Maintenance & Support</h4>
-                  <p className="text-sm text-gray-600">Regular updates & security monitoring</p>
-                </motion.div>
-              </motion.div>
-              <div className="bg-white p-6 rounded-lg mb-6">
-                <h4 className="font-bold mb-3 text-lg">What You Get:</h4>
-                <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-3"
-                  initial="hidden"
-                  animate={servicesInView ? "visible" : "hidden"}
-                  variants={staggerContainer}
-                >
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Clean & modern UI design</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Mobile & tablet responsive</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ SEO-ready structure</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Contact & lead forms</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Fast page speed</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Secure admin access</motion.p>
-                </motion.div>
-              </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/services/website-development/business" className="inline-block mt-6 btn-primary">
-                  Learn More →
-                </Link>
               </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Digital Marketing */}
-          <motion.div 
-            className="mb-20"
-            initial="hidden"
-            animate={servicesInView ? "visible" : "hidden"}
-            variants={slideInRight}
-          >
-            <motion.div 
-              className="bg-gradient-to-br from-green-50 via-green-100 to-emerald-100 p-10 rounded-2xl shadow-xl border border-green-200"
-              whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col md:flex-row items-center mb-6 gap-6">
+            {/* Digital Marketing */}
+            <motion.div variants={scaleIn}>
+              <motion.div 
+                className="bg-gradient-to-br from-green-50 via-green-100 to-emerald-100 p-8 rounded-2xl shadow-xl border border-green-200 h-full flex flex-col"
+                whileHover={{ scale: 1.03, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <motion.img 
                   src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=400&h=300&fit=crop&q=80" 
                   alt="Digital Marketing" 
-                  className="w-full md:w-48 h-48 object-cover rounded-lg shadow-lg"
-                  whileHover={{ scale: 1.1, rotate: -2 }}
+                  className="w-full h-48 object-cover rounded-lg shadow-lg mb-6"
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
-                <div>
-                  <h3 className="text-3xl font-bold text-gray-900">Digital Marketing Services</h3>
-                  <p className="text-lg text-gray-700 mt-2">
-                    Grow Your Brand, Leads & Revenue with Smart Digital Marketing
-                  </p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Digital Marketing</h3>
+                <p className="text-gray-700 mb-4 flex-grow">
+                  Grow your brand, leads & revenue with data-driven digital marketing strategies
+                </p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-sm text-gray-600">✓ Search Engine Optimization (SEO)</p>
+                  <p className="text-sm text-gray-600">✓ Social Media Marketing</p>
+                  <p className="text-sm text-gray-600">✓ Google Ads & PPC</p>
+                  <p className="text-sm text-gray-600">✓ Content Marketing</p>
                 </div>
-              </div>
-              <p className="text-gray-700 mb-6">
-                In a competitive digital world, simply being online is not enough. Your business needs visibility, 
-                engagement, and consistent leads. We provide data-driven digital marketing solutions designed to 
-                attract the right audience and convert them into paying customers.
-              </p>
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
-                initial="hidden"
-                animate={servicesInView ? "visible" : "hidden"}
-                variants={staggerContainer}
-              >
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Search Engine Optimization (SEO)</h4>
-                  <p className="text-sm text-gray-600">Rank higher on Google for long-term traffic</p>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+                  <Link href="/services/digital-marketing/seo" className="inline-block btn-primary w-full text-center">
+                    Learn More →
+                  </Link>
                 </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Social Media Marketing</h4>
-                  <p className="text-sm text-gray-600">Build brand authority & engage audience</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Google Ads & PPC</h4>
-                  <p className="text-sm text-gray-600">Instant visibility with targeted ads</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Content Marketing</h4>
-                  <p className="text-sm text-gray-600">Educate, build trust & drive conversions</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Local Business Marketing</h4>
-                  <p className="text-sm text-gray-600">Dominate local search results</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Lead Generation</h4>
-                  <p className="text-sm text-gray-600">Qualified leads, not random traffic</p>
-                </motion.div>
-              </motion.div>
-              <div className="bg-white p-6 rounded-lg mb-6">
-                <h4 className="font-bold mb-3 text-lg">Our Approach:</h4>
-                <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-3"
-                  initial="hidden"
-                  animate={servicesInView ? "visible" : "hidden"}
-                  variants={staggerContainer}
-                >
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Performance-focused marketing</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Transparent reporting</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Ethical growth strategies</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Real business growth focus</motion.p>
-                </motion.div>
-              </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/services/digital-marketing/seo" className="inline-block mt-6 btn-primary">
-                  Learn More →
-                </Link>
               </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Financial & Compliance Services */}
-          <motion.div 
-            className="mb-20"
-            initial="hidden"
-            animate={servicesInView ? "visible" : "hidden"}
-            variants={slideInLeft}
-          >
-            <motion.div 
-              className="bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 p-10 rounded-2xl shadow-xl border border-yellow-200"
-              whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col md:flex-row items-center mb-6 gap-6">
+            {/* Financial & Compliance Services */}
+            <motion.div variants={scaleIn}>
+              <motion.div 
+                className="bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 p-8 rounded-2xl shadow-xl border border-yellow-200 h-full flex flex-col"
+                whileHover={{ scale: 1.03, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+                transition={{ duration: 0.3 }}
+              >
                 <motion.img 
                   src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop&q=80" 
                   alt="Financial Services" 
-                  className="w-full md:w-48 h-48 object-cover rounded-lg shadow-lg"
-                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  className="w-full h-48 object-cover rounded-lg shadow-lg mb-6"
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
-                <div>
-                  <h3 className="text-3xl font-bold text-gray-900">Financial & Compliance Services</h3>
-                  <p className="text-lg text-gray-700 mt-2">
-                    Simplifying Business Finance & Compliance for Sustainable Growth
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-6">
-                Managing finances and compliance can be complex and time-consuming. We provide practical, 
-                transparent, and compliance-focused financial support services that help you stay organized, 
-                compliant, and growth-ready. Handle the financial groundwork so you can focus on your business.
-              </p>
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
-                initial="hidden"
-                animate={servicesInView ? "visible" : "hidden"}
-                variants={staggerContainer}
-              >
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ GST Registration & Compliance</h4>
-                  <p className="text-sm text-gray-600">Registration, filing & guidance support</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Income Tax Filing</h4>
-                  <p className="text-sm text-gray-600">Individual & business tax assistance</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Business Registration</h4>
-                  <p className="text-sm text-gray-600">Proprietorship, MSME & documentation</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Financial Documentation</h4>
-                  <p className="text-sm text-gray-600">Bookkeeping & structuring guidance</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Compliance Advisory</h4>
-                  <p className="text-sm text-gray-600">Ongoing regulatory guidance</p>
-                </motion.div>
-                <motion.div variants={scaleIn} whileHover={{ y: -5 }} className="bg-white p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">✓ Business Structuring</h4>
-                  <p className="text-sm text-gray-600">Financial clarity & planning support</p>
-                </motion.div>
-              </motion.div>
-              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded mb-6">
-                <p className="text-sm text-gray-700">
-                  <strong>⚠ Note:</strong> We do not provide investment advisory, trading, or stock market-related 
-                  services under this brand. All services are compliance-focused and provided with clear guidance.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Financial & Compliance</h3>
+                <p className="text-gray-700 mb-4 flex-grow">
+                  Simplifying business finance & compliance for sustainable growth and peace of mind
                 </p>
-              </div>
-              <div className="bg-white p-6 rounded-lg mb-6">
-                <h4 className="font-bold mb-3 text-lg">Why Choose Us:</h4>
-                <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-3"
-                  initial="hidden"
-                  animate={servicesInView ? "visible" : "hidden"}
-                  variants={staggerContainer}
-                >
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Compliance-focused approach</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Clear & honest guidance</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Affordable & transparent pricing</motion.p>
-                  <motion.p variants={fadeInUp} className="text-gray-700">✓ Long-term support mindset</motion.p>
+                <div className="space-y-2 mb-6">
+                  <p className="text-sm text-gray-600">✓ GST Registration & Filing</p>
+                  <p className="text-sm text-gray-600">✓ Income Tax Filing (ITR)</p>
+                  <p className="text-sm text-gray-600">✓ Business Registration</p>
+                  <p className="text-sm text-gray-600">✓ Compliance Advisory</p>
+                </div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+                  <Link href="/services/financial/registrations" className="inline-block btn-primary w-full text-center">
+                    Learn More →
+                  </Link>
                 </motion.div>
-              </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/services/financial/gst-registration" className="inline-block mt-6 btn-primary">
-                  Learn More →
-                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -545,11 +539,11 @@ export default function HomePage() {
             <motion.div variants={scaleIn}>
               <Link href="/industries/traders" className="block bg-white rounded-lg shadow-lg overflow-hidden group">
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                  <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=300&fit=crop&q=80" alt="Traders" className="w-full h-48 object-cover" />
+                  <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=300&fit=crop&q=80" alt="Financial Professionals" className="w-full h-48 object-cover" />
                 </motion.div>
                 <motion.div className="p-6" whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.05)" }}>
-                  <h3 className="text-xl font-bold mb-3">Traders & Investors</h3>
-                  <p className="text-gray-600">Master the market with expert guidance</p>
+                  <h3 className="text-xl font-bold mb-3">Financial Professionals</h3>
+                  <p className="text-gray-600">Complete financial and compliance solutions</p>
                 </motion.div>
               </Link>
             </motion.div>
@@ -588,85 +582,191 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="container">
+      {/* Why Choose Us - Enhanced Value Proposition */}
+      <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-40">
+          <motion.div 
+            className="absolute top-0 left-1/4 w-2 h-2 bg-blue-500 rounded-full"
+            animate={{ scale: [1, 2, 1], opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute top-20 right-1/4 w-3 h-3 bg-green-500 rounded-full"
+            animate={{ scale: [1, 2.5, 1], opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+          />
+          <motion.div 
+            className="absolute bottom-20 left-1/3 w-2 h-2 bg-purple-500 rounded-full"
+            animate={{ scale: [1, 2, 1], opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+          />
+        </div>
+
+        <div className="container relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial="hidden"
             animate={whyChooseInView ? "visible" : "hidden"}
             variants={fadeInUp}
           >
-            <span className="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-semibold mb-4">WHY CHOOSE US</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Why Choose Netblade Consulting?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Your success is our mission — Experience the difference</p>
+            <motion.span 
+              className="inline-block px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-full text-sm font-semibold mb-6 shadow-lg"
+              whileHover={{ scale: 1.1 }}
+            >
+              ✓ TRUSTED BY 500+ BUSINESSES
+            </motion.span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">Why Choose Netblade Consulting?</h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Your success is our mission — Experience the <span className="text-blue-600 font-semibold">Netblade difference</span> where innovation meets dedication
+            </p>
           </motion.div>
+
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto"
             initial="hidden"
             animate={whyChooseInView ? "visible" : "hidden"}
             variants={staggerContainer}
           >
             <motion.div 
               variants={slideInLeft} 
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="flex items-start p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg"
+              whileHover={{ y: -15, scale: 1.03, boxShadow: "0 25px 50px rgba(59, 130, 246, 0.25)" }}
+              className="relative p-8 bg-gradient-to-br from-blue-50 via-white to-blue-100 rounded-2xl shadow-xl border border-blue-100 overflow-hidden group"
             >
-              <motion.div 
-                className="text-4xl mr-5 text-blue-600"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >✓</motion.div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-blue-900">Integrated Expertise</h3>
-                <p className="text-gray-700 leading-relaxed">Tech + Marketing + Finance all in one place — Seamless coordination across all aspects of your business</p>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="flex items-start relative z-10">
+                <motion.div 
+                  className="text-5xl mr-6 text-blue-600 bg-blue-100 p-4 rounded-2xl shadow-lg"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >🎯</motion.div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-blue-900">Integrated 360° Expertise</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    <span className="font-semibold text-blue-600">Tech + Marketing + Finance</span> — A rare combination that saves you time, money, and coordination headaches
+                  </p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center"><span className="text-blue-500 mr-2">✓</span>Single point of contact</li>
+                    <li className="flex items-center"><span className="text-blue-500 mr-2">✓</span>Seamless team coordination</li>
+                    <li className="flex items-center"><span className="text-blue-500 mr-2">✓</span>Holistic growth strategy</li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
+
             <motion.div 
               variants={slideInRight} 
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="flex items-start p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow-lg"
+              whileHover={{ y: -15, scale: 1.03, boxShadow: "0 25px 50px rgba(16, 185, 129, 0.25)" }}
+              className="relative p-8 bg-gradient-to-br from-green-50 via-white to-green-100 rounded-2xl shadow-xl border border-green-100 overflow-hidden group"
             >
-              <motion.div 
-                className="text-4xl mr-5 text-green-600"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-              >✓</motion.div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-green-900">Honest Consulting</h3>
-                <p className="text-gray-700 leading-relaxed">No false promises, just real results — Transparent communication and actionable strategies</p>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="flex items-start relative z-10">
+                <motion.div 
+                  className="text-5xl mr-6 text-green-600 bg-green-100 p-4 rounded-2xl shadow-lg"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                >🎖️</motion.div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-green-900">Honest & Ethical Consulting</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    <span className="font-semibold text-green-600">No false promises, just real results</span> — Our reputation is built on transparency, integrity, and proven performance
+                  </p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center"><span className="text-green-500 mr-2">✓</span>Clear communication</li>
+                    <li className="flex items-center"><span className="text-green-500 mr-2">✓</span>Realistic timelines</li>
+                    <li className="flex items-center"><span className="text-green-500 mr-2">✓</span>Measurable outcomes</li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
+
             <motion.div 
               variants={slideInLeft} 
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="flex items-start p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg"
+              whileHover={{ y: -15, scale: 1.03, boxShadow: "0 25px 50px rgba(168, 85, 247, 0.25)" }}
+              className="relative p-8 bg-gradient-to-br from-purple-50 via-white to-purple-100 rounded-2xl shadow-xl border border-purple-100 overflow-hidden group"
             >
-              <motion.div 
-                className="text-4xl mr-5 text-purple-600"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-              >✓</motion.div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-purple-900">Scalable Solutions</h3>
-                <p className="text-gray-700 leading-relaxed">Grow as your business grows — Flexible services designed to expand with your ambitions</p>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="flex items-start relative z-10">
+                <motion.div 
+                  className="text-5xl mr-6 text-purple-600 bg-purple-100 p-4 rounded-2xl shadow-lg"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                >📈</motion.div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-purple-900">Scalable & Future-Ready</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    <span className="font-semibold text-purple-600">Grow without limits</span> — Our flexible solutions and modular services evolve with your ambitions and market demands
+                  </p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center"><span className="text-purple-500 mr-2">✓</span>Flexible packages</li>
+                    <li className="flex items-center"><span className="text-purple-500 mr-2">✓</span>Easy upgrades</li>
+                    <li className="flex items-center"><span className="text-purple-500 mr-2">✓</span>Latest technologies</li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
+
             <motion.div 
               variants={slideInRight} 
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="flex items-start p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl shadow-lg"
+              whileHover={{ y: -15, scale: 1.03, boxShadow: "0 25px 50px rgba(249, 115, 22, 0.25)" }}
+              className="relative p-8 bg-gradient-to-br from-orange-50 via-white to-orange-100 rounded-2xl shadow-xl border border-orange-100 overflow-hidden group"
             >
-              <motion.div 
-                className="text-4xl mr-5 text-orange-600"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              >✓</motion.div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-orange-900">Client-First Approach</h3>
-                <p className="text-gray-700 leading-relaxed">Building long-term partnerships — Dedicated support and personalized attention every step of the way</p>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="flex items-start relative z-10">
+                <motion.div 
+                  className="text-5xl mr-6 text-orange-600 bg-orange-100 p-4 rounded-2xl shadow-lg"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                >❤️</motion.div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-orange-900">Client-First, Always</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    <span className="font-semibold text-orange-600">Your success = Our success</span> — We're not just service providers, we're your dedicated growth partners invested in your journey
+                  </p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center"><span className="text-orange-500 mr-2">✓</span>24/7 support available</li>
+                    <li className="flex items-center"><span className="text-orange-500 mr-2">✓</span>Personalized attention</li>
+                    <li className="flex items-center"><span className="text-orange-500 mr-2">✓</span>Long-term partnerships</li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
+          </motion.div>
+
+          {/* Trust Indicators */}
+          <motion.div
+            className="mt-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-2 rounded-2xl shadow-2xl"
+            initial="hidden"
+            animate={whyChooseInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+          >
+            <div className="bg-white rounded-xl p-8 md:p-12">
+              <p className="text-center text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+                Trusted by startups, SMEs, and established businesses across India 🇮🇳
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">100%</div>
+                  <div className="text-sm text-gray-600">Data Security</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">ISO</div>
+                  <div className="text-sm text-gray-600">Quality Standard</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">CA</div>
+                  <div className="text-sm text-gray-600">Certified Team</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+                  <div className="text-sm text-gray-600">Support</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-pink-600 mb-2">10+</div>
+                  <div className="text-sm text-gray-600">Years Exp.</div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

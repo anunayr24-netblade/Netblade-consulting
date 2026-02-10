@@ -23,14 +23,14 @@ export default function DisclaimerPage() {
               <h2 className="text-2xl font-bold mb-4">Financial Services Disclaimer</h2>
               <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-4">
                 <p className="text-gray-700 mb-4">
-                  <strong>NOT SEBI REGISTERED:</strong> Netblade Consulting is NOT a SEBI-registered 
-                  investment advisor or portfolio management service. We do not provide regulated 
-                  financial advisory services.
+                  <strong>FINANCIAL GUIDANCE ONLY:</strong> Netblade Consulting provides guidance and 
+                  support for business registrations, compliance, accounting, and other financial services. 
+                  We do not provide investment advisory or wealth management services.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  <strong>EDUCATIONAL PURPOSE ONLY:</strong> All stock market education, trading 
-                  psychology guidance, and investment planning support are provided solely for 
-                  educational and informational purposes.
+                  <strong>INFORMATIONAL PURPOSE:</strong> All financial services guidance is provided 
+                  for informational and support purposes. Professional advice should be sought for 
+                  complex matters.
                 </p>
                 <p className="text-gray-700">
                   <strong>NO FINANCIAL ADVICE:</strong> Nothing we provide should be construed as 

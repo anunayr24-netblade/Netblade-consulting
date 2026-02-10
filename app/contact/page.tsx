@@ -166,10 +166,13 @@ export default function ContactPage() {
                       <option value="seo">SEO Services</option>
                       <option value="social-media">Social Media Marketing</option>
                       <option value="google-ads">Google Ads</option>
-                      <option value="financial-services">Financial Services</option>
-                      <option value="stock-market-education">Stock Market Education</option>
-                      <option value="gst-registration">GST Registration</option>
-                      <option value="tax-filing">Tax Filing</option>
+                      <option value="registrations">Business Registrations</option>
+                      <option value="itr">ITR Filing</option>
+                      <option value="accounting">Accounting & Balance Sheet</option>
+                      <option value="dsc-trademark">DSC & Trademark</option>
+                      <option value="gst-returns">GST & GST Returns</option>
+                      <option value="compliances">Compliances</option>
+                      <option value="loans-credit-cards">Loans & Credit Cards</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

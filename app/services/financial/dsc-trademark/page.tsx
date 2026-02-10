@@ -3,20 +3,19 @@
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 
-export default function RealEstateWebsitePage() {
+export default function DSCTrademarkPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [statsVisible, setStatsVisible] = useState(false)
-  const [counters, setCounters] = useState({ websites: 0, properties: 0, leads: 0, satisfaction: 0 })
+  const [counters, setCounters] = useState({ dsc: 0, trademarks: 0, clients: 0, experience: 0 })
   const statsRef = useRef<HTMLDivElement>(null)
 
   const testimonials = [
-    { name: "Ravi Gupta", business: "Real Estate Broker", text: "Property listing website brought us 50+ serious buyers in first month. Amazing results!" },
-    { name: "Anita Malhotra", business: "Property Developer", text: "Beautiful property showcase with virtual tours. Sales increased significantly!" },
-    { name: "Deepak Joshi", business: "Real Estate Agency", text: "Lead capture system works perfectly. Converting 30% of inquiries into site visits!" },
-    { name: "Meena Patel", business: "Property Consultant", text: "Mobile-friendly design helps buyers browse properties on the go. Great investment!" }
+    { name: "Abhishek Thakur", business: "Startup Founder", text: "Got my trademark registered smoothly! They handled objections perfectly and my brand is now protected." },
+    { name: "Ritika Malhotra", business: "Company Director", text: "DSC received in 2 days! Super fast service for our MCA compliance needs." },
+    { name: "Mohit Jain", business: "E-commerce Seller", text: "Trademark search was thorough and filing process was hassle-free. Highly professional!" },
+    { name: "Shalini Rao", business: "Creative Agency", text: "Protected our brand name and logo. Great support throughout the trademark registration journey!" }
   ]
 
-  // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
@@ -24,7 +23,6 @@ export default function RealEstateWebsitePage() {
     return () => clearInterval(interval)
   }, [])
 
-  // Intersection Observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +39,6 @@ export default function RealEstateWebsitePage() {
     return () => observer.disconnect()
   }, [])
 
-  // Stats counter animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,20 +58,20 @@ export default function RealEstateWebsitePage() {
     const duration = 2000
     const steps = 60
     const increment = {
-      websites: 80 / steps,
-      properties: 5000 / steps,
-      leads: 350 / steps,
-      satisfaction: 96 / steps
+      dsc: 400 / steps,
+      trademarks: 250 / steps,
+      clients: 600 / steps,
+      experience: 10 / steps
     }
 
     let step = 0
     const timer = setInterval(() => {
       step++
       setCounters({
-        websites: Math.min(Math.floor(increment.websites * step), 80),
-        properties: Math.min(Math.floor(increment.properties * step), 5000),
-        leads: Math.min((increment.leads * step), 350),
-        satisfaction: Math.min((increment.satisfaction * step), 96)
+        dsc: Math.min(Math.floor(increment.dsc * step), 400),
+        trademarks: Math.min(Math.floor(increment.trademarks * step), 250),
+        clients: Math.min(Math.floor(increment.clients * step), 600),
+        experience: Math.min(Math.floor(increment.experience * step), 10)
       })
       if (step >= steps) clearInterval(timer)
     }, duration / steps)
@@ -131,45 +128,47 @@ export default function RealEstateWebsitePage() {
           animation-delay: 1s;
         }
         .gradient-animated {
-          background: linear-gradient(-45deg, #1e40af, #1e3a8a, #1e293b, #0f172a);
+          background: linear-gradient(-45deg, #1e3a8a, #1e293b, #312e81, #1e40af);
           background-size: 400% 400%;
           animation: gradientShift 15s ease infinite;
         }
-        .card-hover {
+        .card-glow {
           transition: all 0.3s ease;
         }
-        .card-hover:hover {
-          box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        .card-glow:hover {
+          box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
           transform: translateY(-5px);
         }
       `}</style>
 
       <section className="relative text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-blue-900 to-blue-700"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center animate-pulse-slow"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80')" }}
+        ></div>
         <div className="absolute inset-0 gradient-animated opacity-85"></div>
         <div className="container relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl text-white animate-fade-in">
-            Real Estate Website Development
+            DSC & Trademark Services
           </h1>
           <p className="text-xl md:text-2xl drop-shadow-xl text-blue-100 font-medium animate-slide-in" style={{ animationDelay: '0.2s' }}>
-            Showcase properties and attract buyers with stunning real estate websites
+            Digital signature and brand protection services
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
-              <span className="font-semibold text-white">✓ Property Listings</span>
+              <span className="font-semibold text-white">✓ Digital Signature</span>
             </div>
             <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
-              <span className="font-semibold text-white">✓ Virtual Tours</span>
+              <span className="font-semibold text-white">✓ Trademark Filing</span>
             </div>
             <div className="badge-float bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/30 transition-all duration-300 hover:bg-white/30 hover:scale-110">
-              <span className="font-semibold text-white">✓ Lead Generation</span>
+              <span className="font-semibold text-white">✓ Brand Protection</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Animated Stats Counter Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-16 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-purple-600 to-blue-600 py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
@@ -177,20 +176,20 @@ export default function RealEstateWebsitePage() {
         <div className="container relative z-10" ref={statsRef}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
             <div className="fade-on-scroll">
-              <div className="text-5xl font-bold mb-2">{counters.websites}+</div>
-              <div className="text-blue-100 text-lg">RE Websites Built</div>
+              <div className="text-5xl font-bold mb-2">{counters.dsc}+</div>
+              <div className="text-blue-100 text-lg">DSC Issued</div>
             </div>
             <div className="fade-on-scroll" style={{ transitionDelay: '0.1s' }}>
-              <div className="text-5xl font-bold mb-2">{counters.properties}+</div>
-              <div className="text-blue-100 text-lg">Properties Listed</div>
+              <div className="text-5xl font-bold mb-2">{counters.trademarks}+</div>
+              <div className="text-blue-100 text-lg">Trademarks Registered</div>
             </div>
             <div className="fade-on-scroll" style={{ transitionDelay: '0.2s' }}>
-              <div className="text-5xl font-bold mb-2">{counters.leads.toFixed(0)}%</div>
-              <div className="text-blue-100 text-lg">Lead Increase</div>
+              <div className="text-5xl font-bold mb-2">{counters.clients}+</div>
+              <div className="text-blue-100 text-lg">Happy Clients</div>
             </div>
             <div className="fade-on-scroll" style={{ transitionDelay: '0.3s' }}>
-              <div className="text-5xl font-bold mb-2">{counters.satisfaction.toFixed(0)}%</div>
-              <div className="text-blue-100 text-lg">Client Satisfaction</div>
+              <div className="text-5xl font-bold mb-2">{counters.experience}+</div>
+              <div className="text-blue-100 text-lg">Years Experience</div>
             </div>
           </div>
         </div>
@@ -199,24 +198,23 @@ export default function RealEstateWebsitePage() {
       <section className="py-16">
         <div className="container max-w-5xl">
           <p className="text-lg text-gray-700 mb-12 fade-on-scroll">
-            Stand out in the competitive real estate market with a professionally designed website 
-            that showcases your properties beautifully and generates quality leads.
+            Secure your digital transactions and protect your brand identity with our DSC and 
+            trademark registration services. Essential for modern business operations and brand protection.
           </p>
 
-          {/* Testimonials Carousel */}
           <div className="mb-16 fade-on-scroll">
-            <div className="bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-blue-300 rounded-full blur-3xl opacity-50 animate-float"></div>
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-400 rounded-full blur-3xl opacity-50 animate-float" style={{ animationDelay: '1.5s' }}></div>
+            <div className="bg-gradient-to-r from-purple-100 via-blue-100 to-purple-100 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-purple-300 rounded-full blur-3xl opacity-50 animate-float"></div>
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-300 rounded-full blur-3xl opacity-50 animate-float" style={{ animationDelay: '1.5s' }}></div>
               
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">What Our Clients Say</h3>
                 <div className="transition-all duration-500 ease-in-out">
                   <div className="text-center">
                     <p className="text-gray-700 text-lg italic mb-4 min-h-[80px] flex items-center justify-center px-4">
-                      &quot;{testimonials[currentTestimonial].text}&quot;
+                      "{testimonials[currentTestimonial].text}"
                     </p>
-                    <p className="font-bold text-blue-700">{testimonials[currentTestimonial].name}</p>
+                    <p className="font-bold text-purple-700">{testimonials[currentTestimonial].name}</p>
                     <p className="text-sm text-gray-600">{testimonials[currentTestimonial].business}</p>
                   </div>
                 </div>
@@ -227,7 +225,7 @@ export default function RealEstateWebsitePage() {
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial ? 'bg-blue-600 w-8' : 'bg-blue-300'
+                        index === currentTestimonial ? 'bg-purple-600 w-8' : 'bg-purple-300'
                       }`}
                     />
                   ))}
@@ -236,36 +234,48 @@ export default function RealEstateWebsitePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 fade-on-scroll">
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">🏘️ Property Listings</h3>
-              <p className="text-gray-700">Advanced search and filter options for properties</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 fade-on-scroll">
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">🔐 Digital Signature Certificate (DSC)</h3>
+              <p className="text-gray-700">Class 2 and Class 3 DSC for business compliance and e-filing</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">📸 Virtual Tours</h3>
-              <p className="text-gray-700">360° property views and video walkthroughs</p>
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">™️ Trademark Registration</h3>
+              <p className="text-gray-700">Protect your brand name and logo with official trademark</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">📱 Mobile-First Design</h3>
-              <p className="text-gray-700">Perfect viewing experience on all devices</p>
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">🔍 Trademark Search</h3>
+              <p className="text-gray-700">Comprehensive trademark availability check and clearance</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">📍 Map Integration</h3>
-              <p className="text-gray-700">Location-based search and property mapping</p>
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">📜 Copyright Registration</h3>
+              <p className="text-gray-700">Protect your creative works, content, and intellectual property</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">📊 Lead Management</h3>
-              <p className="text-gray-700">Capture and track potential buyers</p>
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">🔄 DSC Renewal</h3>
+              <p className="text-gray-700">Timely renewal of digital signatures before expiry</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg card-hover">
-              <h3 className="font-bold text-lg mb-2">💬 Inquiry Forms</h3>
-              <p className="text-gray-700">Easy communication with potential clients</p>
+            <div className="bg-purple-50 p-6 rounded-lg card-glow">
+              <h3 className="font-bold text-lg mb-2">⚖️ Trademark Objections</h3>
+              <p className="text-gray-700">Expert handling of trademark objections and legal replies</p>
             </div>
           </div>
 
-          <div className="text-center fade-on-scroll">
-            <Link href="/contact" className="btn-primary text-lg px-8 py-4 transition-all duration-300 hover:scale-110 hover:shadow-2xl inline-block">Get Your Real Estate Website</Link>
-            <p className="text-sm text-gray-600 mt-4">Contact us for customized real estate website solutions</p>
+          <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-8 rounded-xl mb-12 fade-on-scroll">
+            <h3 className="text-2xl font-bold mb-4">Why You Need These Services</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li>✓ DSC mandatory for MCA filings, GST registration, and e-tenders</li>
+              <li>✓ Protect your brand from unauthorized use and infringement</li>
+              <li>✓ Legal ownership and exclusive rights to your business identity</li>
+              <li>✓ Enhanced credibility and trust with customers</li>
+              <li>✓ Prevent competitors from using similar brand names</li>
+              <li>✓ Secure digital transactions with government portals</li>
+            </ul>
+          </div>
+
+          <div className="text-center">
+            <Link href="/contact" className="btn-primary text-lg px-8 py-4">Get DSC & Trademark Services</Link>
+            <p className="text-sm text-gray-600 mt-4">Contact us for consultation and quick processing</p>
           </div>
         </div>
       </section>

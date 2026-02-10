@@ -7,7 +7,7 @@ A professional multi-service consulting firm website built with Next.js, TypeScr
 Netblade Consulting offers comprehensive services in:
 - **Website Development** - Modern, responsive websites
 - **Digital Marketing** - SEO, Social Media, Google Ads, Content Marketing
-- **Financial Services** - Stock market education, investment planning, GST & tax guidance
+- **Financial Services** - Business registrations, ITR, accounting, GST, compliances, loans
 
 ## 🚀 Getting Started
 
@@ -71,12 +71,12 @@ netblade-consulting/
 ### Services Structure
 1. **Website Development** - Business, Real Estate, WordPress, Redesign
 2. **Digital Marketing** - SEO, Social Media, Google Ads, Content Marketing
-3. **Financial Services** - Stock Market Education, Trading Psychology, Investment Planning, GST, Tax Filing
+3. **Financial Services** - Registrations, ITR, Accounting & Balance Sheet, DSC & Trademark, GST & GST Returns, Compliances, Loans & Credit Cards
 
 ### Industries Served
 - Startups & Small Businesses
 - Real Estate Professionals
-- Traders & Investors
+- Financial Professionals & Business Owners
 - Coaches & Educators
 - Freelancers & Consultants
 
