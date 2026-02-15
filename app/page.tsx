@@ -484,7 +484,7 @@ export default function HomePage() {
                   <p className="text-sm text-gray-600">✓ Compliance Advisory</p>
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
-                  <Link href="/services/financial/registrations" className="inline-block btn-primary w-full text-center">
+                  <Link href="/services/financial" className="inline-block btn-primary w-full text-center">
                     Learn More →
                   </Link>
                 </motion.div>

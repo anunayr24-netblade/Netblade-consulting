@@ -10,6 +10,122 @@ export default function BusinessWebsitePage() {
   const [counters, setCounters] = useState({ projects: 0, clients: 0, satisfaction: 0, uptime: 0 })
   const statsRef = useRef<HTMLDivElement>(null)
 
+  const pricingPlans = [
+    {
+      name: 'Basic Website',
+      description: 'Perfect for individuals and small startups',
+      price: '₹9,000',
+      color: 'blue',
+      features: [
+        'Up to 12 static pages',
+        'Mobile responsive design',
+        'Contact form integration',
+        'Basic SEO optimization',
+        'SSL certificate included',
+        'Hosting & Domain for 1 year',
+        'Maintenance for 1 year',
+        'Social media links',
+        'Google Analytics setup',
+      ],
+      cta: 'Get Started',
+      link: '/contact',
+    },
+    {
+      name: 'Advanced Website',
+      description: 'Ideal for growing businesses',
+      price: '₹20,000',
+      color: 'purple',
+      popular: true,
+      features: [
+        'Up to 50 dynamic pages',
+        'Mobile & tablet responsive',
+        'Contact & inquiry forms',
+        'Advanced SEO optimization',
+        'SSL certificate included',
+        'Hosting & Domain for 1 years',
+        'Email integration',
+        'Blog section with CMS',
+        'Admin dashboard access',
+        'Performance optimization',
+        'Backup and security setup',
+        'Social media integration',
+      ],
+      cta: 'Choose Plan',
+      link: '/contact',
+    },
+    {
+      name: 'Business Website',
+      description: 'For established companies & enterprises',
+      price: '₹35,000+',
+      color: 'green',
+      features: [
+        'Unlimited pages & features',
+        'Full desktop & mobile responsive',
+        'Advanced forms & workflows',
+        'Enterprise SEO optimization',
+        'SSL & security features',
+        'Hosting & Domain for 2 years',
+        'E-commerce capabilities',
+        'Content Management System',
+        'Admin & user roles',
+        'API integrations',
+        'Performance analytics',
+        'Priority support (6 months)',
+        'Custom features & development',
+        'Regular updates & maintenance',
+      ],
+      cta: 'Get Custom Quote',
+      link: '/contact',
+    },
+    {
+      name: 'Custom Website',
+      description: 'Tailored solutions for unique requirements',
+      price: 'Custom Quote',
+      color: 'indigo',
+      features: [
+        'Fully customized architecture & design',
+        'Unlimited pages & custom functionality',
+        'Advanced integrations (CRM, ERP, APIs)',
+        'Multi-language support',
+        'Advanced security & compliance',
+        'Real-time analytics & reporting',
+        'Custom admin dashboards',
+        'Scalable infrastructure',
+        'Performance optimization',
+        'Dedicated project manager',
+        'Extended support & maintenance',
+        'Training & documentation',
+        'White-label options available',
+        'Migration assistance',
+      ],
+      cta: 'Contact for Quote',
+      link: '/contact',
+    },
+  ]
+
+  const colorClasses: { [key: string]: { button: string; bg: string; text: string } } = {
+    blue: {
+      button: 'bg-blue-600 hover:bg-blue-700',
+      bg: 'bg-blue-50',
+      text: 'text-blue-600',
+    },
+    purple: {
+      button: 'bg-purple-600 hover:bg-purple-700',
+      bg: 'bg-purple-50',
+      text: 'text-purple-600',
+    },
+    green: {
+      button: 'bg-green-600 hover:bg-green-700',
+      bg: 'bg-green-50',
+      text: 'text-green-600',
+    },
+    indigo: {
+      button: 'bg-indigo-600 hover:bg-indigo-700',
+      bg: 'bg-indigo-50',
+      text: 'text-indigo-600',
+    },
+  }
+
   const toggleFlip = (cardId: string) => {
     setFlippedCards(prev => ({ ...prev, [cardId]: !prev[cardId] }))
   }
@@ -254,6 +370,74 @@ export default function BusinessWebsitePage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Why Choose Netblade - Pitching Section */}
+          <div className="mb-16 fade-on-scroll">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Netblade Consulting?</h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Industry-leading expertise and proven results for your business
+              </p>
+            </div>
+
+            {/* Scrolling Container */}
+            <div className="relative w-full overflow-hidden">
+              {/* Scrolling Track */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-3 tech-scroll whitespace-nowrap py-6">
+                  {/* Pitching Points */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Lightning-Fast Performance</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Enterprise Security</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Mobile-First Design</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Conversion Focused</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Data-Driven Decisions</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Dedicated Support</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">ISO Certified Team</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">10+ Years Experience</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">500+ Sites Launched</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">4.9/5 Rating</span></div>
+                  </div>
+
+                  {/* Repeat for seamless loop */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Lightning-Fast Performance</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Enterprise Security</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Mobile-First Design</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Description Below */}
+            <div className="mt-8 text-center">
+              <p className="text-lg text-gray-900 max-w-4xl mx-auto leading-relaxed">
+                At Netblade Consulting, we combine cutting-edge technology with strategic business insights to deliver websites that not only look beautiful but actively drive growth. Our proven methodology has helped hundreds of businesses establish powerful online presences, increasing their qualified leads and revenue. Whether you're a startup, established business, or enterprise looking to transform your digital presence, our team of certified professionals is ready to build your success story. We don't just build websites—we build competitive advantages.
+              </p>
             </div>
           </div>
 
@@ -648,70 +832,250 @@ export default function BusinessWebsitePage() {
             </div>
           </div>
 
-          {/* Technology Stack */}
+          {/* Technology Stack - Scrolling Train Effect */}
           <div className="mb-12">
-            <h3 className="text-2xl font-bold mb-6">Technologies We Use</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">React.js</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">Next.js</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">WordPress</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">Node.js</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">HTML5/CSS3</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">Tailwind CSS</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">MongoDB</p>
-              </div>
-              <div className="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
-                <p className="font-semibold">MySQL</p>
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">🛠️ Our Complete Technology Stack</h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                27+ cutting-edge technologies powering our web solutions
+              </p>
+            </div>
+
+            {/* Scrolling Container */}
+            <style>{`
+              @keyframes scroll-left {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+              .tech-scroll {
+                animation: scroll-left 70s linear infinite;
+              }
+              .tech-scroll:hover {
+                animation-play-state: paused;
+              }
+              .tech-card {
+                transition: all 0.3s ease;
+              }
+            `}</style>
+
+            <div className="relative w-full overflow-hidden">
+              {/* Scrolling Track */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-3 tech-scroll whitespace-nowrap py-6">
+                  {/* Frontend */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">React</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Next.js</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Vue.js</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">JS</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">TS</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">HTML5</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">CSS3</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Tailwind</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Bootstrap</span></div>
+                  </div>
+
+                  {/* Backend */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Node.js</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Express</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">PHP</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Laravel</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Python</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">WordPress</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Docker</span></div>
+                  </div>
+
+                  {/* Database */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">MongoDB</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">MySQL</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">PostgreSQL</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Firebase</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">GraphQL</span></div>
+                  </div>
+
+                  {/* DevOps */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Git</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">GitHub</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">AWS</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">G.Cloud</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">CI/CD</span></div>
+                  </div>
+
+                  {/* Repeat for seamless loop */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">React</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Next.js</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Vue.js</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Process */}
-          <div className="bg-gray-50 p-8 rounded-xl">
-            <h3 className="text-2xl font-bold mb-6">Our Development Process</h3>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mr-4">1</div>
-                <div>
-                  <h4 className="font-bold">Discovery & Planning</h4>
-                  <p className="text-gray-700">Understanding your goals, audience, and requirements</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mr-4">2</div>
-                <div>
-                  <h4 className="font-bold">Design & Prototyping</h4>
-                  <p className="text-gray-700">Creating visual designs and interactive prototypes</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mr-4">3</div>
-                <div>
-                  <h4 className="font-bold">Development & Testing</h4>
-                  <p className="text-gray-700">Building your website with clean, maintainable code</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mr-4">4</div>
-                <div>
-                  <h4 className="font-bold">Launch & Support</h4>
-                  <p className="text-gray-700">Deploying your site and providing ongoing maintenance</p>
+          <div className="mb-16 fade-on-scroll">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Our Development Process</h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                A proven 4-step methodology that delivers exceptional results
+              </p>
+            </div>
+
+            {/* Scrolling Container */}
+            <div className="relative w-full overflow-hidden">
+              {/* Scrolling Track */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-3 tech-scroll whitespace-nowrap py-6">
+                  {/* Process Steps */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Discovery & Planning</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Design & Prototyping</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Development & Testing</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Launch & Support</span></div>
+                  </div>
+
+                  {/* Repeat for seamless loop */}
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Discovery & Planning</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Design & Prototyping</span></div>
+                  </div>
+                  <div className="flex-shrink-0 tech-card">
+                    <div className="px-6 py-4 bg-white/30 backdrop-blur rounded-lg hover:bg-white/40 transition-all hover:scale-105 flex items-center justify-center"><span className="text-red-800 text-2xl font-bold whitespace-nowrap drop-shadow">Development & Testing</span></div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Description Below */}
+            <div className="mt-8 text-center">
+              <p className="text-lg text-gray-900 max-w-4xl mx-auto leading-relaxed">
+                Our streamlined development process ensures every project is delivered on time, within budget, and exceeding expectations. From the initial discovery phase where we deeply understand your business goals and target audience, through meticulous design and rigorous testing, to final launch and ongoing support—we manage every detail with precision. This systematic approach has enabled us to successfully launch hundreds of websites, with each one built to perform, convert, and grow with your business.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Select the perfect plan for your business needs. All plans include hosting and SSL certificate.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {pricingPlans.map((plan, index) => {
+              const colors = colorClasses[plan.color]
+              return (
+                <div
+                  key={index}
+                  className={`relative rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-2 border-gray-200`}
+                >
+                  {/* Popular Badge */}
+                  {plan.popular && (
+                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-center py-2 font-bold text-sm z-10">
+                      ⭐ MOST POPULAR
+                    </div>
+                  )}
+
+                  <div className={`${colors.bg} pt-8 pb-8 px-8 ${plan.popular ? 'mt-8' : ''}`}>
+                    <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
+                      <p className="text-sm text-gray-600 mt-2">One-time payment (+ optional annual maintenance)</p>
+                    </div>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="px-8 pb-8">
+                    <h4 className="font-bold text-lg mb-4 text-gray-900">Included Features:</h4>
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start">
+                          <span className="text-green-500 mr-3 flex-shrink-0 mt-0.5 text-lg">✓</span>
+                          <span className="text-gray-700 text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA Button */}
+                    <Link
+                      href={plan.link}
+                      className={`block w-full text-center py-3 px-6 rounded-lg font-bold text-white transition-all duration-300 transform hover:scale-105 ${colors.button}`}
+                    >
+                      {plan.cta}
+                    </Link>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>

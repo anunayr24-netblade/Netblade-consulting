@@ -23,22 +23,11 @@ export default function Navbar() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            {/* About Us Dropdown */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center relative">
-                About Us
-                <svg className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-              </button>
-              <div className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-gray-100">
-                <Link href="/about" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200 first:rounded-t-xl">About Netblade Consulting</Link>
-                <Link href="/about/vision-mission" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200">Our Vision & Mission</Link>
-                <Link href="/about/approach" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200">Our Approach</Link>
-                <Link href="/about/why-choose-us" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200 last:rounded-b-xl">Why Choose Us</Link>
-              </div>
-            </div>
+            {/* About Us */}
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group">
+              About Us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </Link>
 
             {/* Services Dropdown */}
             <div className="relative group">
