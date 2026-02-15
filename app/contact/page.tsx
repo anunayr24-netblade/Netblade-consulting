@@ -8,7 +8,7 @@ const fadeInUp = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.6 }
   }
 }
 
@@ -28,7 +28,7 @@ const scaleIn = {
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.5 }
   }
 }
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
                   <div className="text-4xl mr-4">📧</div>
                   <div>
                     <h3 className="font-bold text-lg mb-1 text-gray-900">Email</h3>
-                    <p className="text-gray-700">info@netbladeconsulting.com</p>
+                    <p className="text-gray-700">Info@netbladeconsutling.in</p>
                   </div>
                 </motion.div>
 
@@ -101,7 +101,7 @@ export default function ContactPage() {
                   <div className="text-4xl mr-4">📞</div>
                   <div>
                     <h3 className="font-bold text-lg mb-1 text-gray-900">Phone / WhatsApp</h3>
-                    <p className="text-gray-700">+91-XXXXXXXXXX</p>
+                    <p className="text-gray-700">+91-9611061413</p>
                     <p className="text-sm text-gray-600 mt-1">Available: Monday - Saturday, 9 AM - 6 PM IST</p>
                   </div>
                 </motion.div>
