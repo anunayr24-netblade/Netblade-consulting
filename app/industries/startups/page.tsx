@@ -1,8 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+
+export const metadata: Metadata = {
+  title: "Startup Digital Marketing & Web Services | Netblade Consulting",
+  description: "Digital marketing and web development for startups. Affordable marketing solutions to help startups grow fast. SEO, ads, social media marketing, and website design.",
+  keywords: "startup marketing, startup digital marketing, startup web design, affordable marketing services, startup consulting, growth services for startups",
+  openGraph: {
+    title: "Startup Digital Marketing & Web Services",
+    description: "Affordable digital marketing solutions designed specifically for startups",
+    type: "website",
+    url: "https://netbladeconsulting.in/industries/startups",
+  },
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },

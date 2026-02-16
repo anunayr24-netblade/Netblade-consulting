@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions - Netblade Consulting",
+  description: "Terms and conditions of service for Netblade Consulting. Understand our terms of use and service agreements.",
+  keywords: "terms and conditions, terms of service, service agreement",
+  openGraph: {
+    title: "Terms & Conditions",
+    description: "Terms and conditions of service",
+    type: "website",
+    url: "https://netbladeconsulting.in/terms-conditions",
+  },
+};
+
 export default function TermsConditionsPage() {
   return (
     <div>

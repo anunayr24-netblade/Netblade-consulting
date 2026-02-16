@@ -1,8 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
+
+export const metadata: Metadata = {
+  title: "Financial Services & Compliance | GST, ITR, Accounting, Registration",
+  description: "Expert financial services - GST returns, ITR filing, accounting, business registration, compliance, loans, credit cards. Help 500+ businesses save taxes and manage finances.",
+  keywords: "financial services, GST returns, ITR filing, business accounting, compliance services, company registration, bookkeeping, tax planning, financial consulting India",
+  openGraph: {
+    title: "Financial & Compliance Services",
+    description: "Complete financial solutions including GST, ITR, accounting, and compliance",
+    type: "website",
+    url: "https://netbladeconsulting.in/services/financial",
+  },
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },

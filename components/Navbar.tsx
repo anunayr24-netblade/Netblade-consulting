@@ -18,20 +18,20 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group">
+            <Link href="/" className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold relative group">
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
             {/* About Us */}
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group">
+            <Link href="/about" className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold relative group">
               About Us
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
             {/* Services Dropdown */}
             <div className="relative group">
-              <button className="text-gray-700 hover:text-primary transition flex items-center">
+              <button className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold flex items-center">
                 Services
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -69,7 +69,7 @@ export default function Navbar() {
 
             {/* Industries Dropdown */}
             <div className="relative group">
-              <button className="text-gray-700 hover:text-primary transition flex items-center">
+              <button className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold flex items-center">
                 Industries
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -84,7 +84,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/contact" className="text-gray-700 hover:text-primary transition">
+            <Link href="/contact" className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold">
               Contact Us
             </Link>
           </div>
@@ -117,13 +117,13 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden py-4 border-t">
-            <Link href="/" className="block py-2 text-gray-700 hover:text-primary">Home</Link>
-            <Link href="/about" className="block py-2 text-gray-700 hover:text-primary">About Us</Link>
-            <Link href="/services/website-development/business" className="block py-2 text-gray-700 hover:text-primary pl-4">Website Development</Link>
-            <Link href="/services/digital-marketing/seo" className="block py-2 text-gray-700 hover:text-primary pl-4">Digital Marketing</Link>
-            <Link href="/services/financial/registrations" className="block py-2 text-gray-700 hover:text-primary pl-4">Financial Services</Link>
-            <Link href="/industries/startups" className="block py-2 text-gray-700 hover:text-primary">Industries</Link>
-            <Link href="/contact" className="block py-2 text-gray-700 hover:text-primary">Contact Us</Link>
+            <Link href="/" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Home</Link>
+            <Link href="/about" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">About Us</Link>
+            <Link href="/services/website-development/business" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Website Development</Link>
+            <Link href="/services/digital-marketing/seo" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Digital Marketing</Link>
+            <Link href="/services/financial/registrations" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Financial Services</Link>
+            <Link href="/industries/startups" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Industries</Link>
+            <Link href="/contact" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Contact Us</Link>
             <div className="mt-4 space-y-2">
               <Link href="/contact#consultation" className="block btn-primary text-center">Book Free Consultation</Link>
               <Link href="/contact#quote" className="block btn-secondary text-center">Get a Quote</Link>

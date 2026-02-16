@@ -1,0 +1,30 @@
+# Netblade Consulting robots.txt
+# Specify rules for search engine crawlers
+
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+
+# Disallow private/admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl delay for respectful crawling (in seconds)
+Crawl-delay: 1
+
+# Request rate (requests per second)
+Request-rate: 1/1s
+
+# Sitemap location
+Sitemap: https://netbladeconsulting.in/sitemap.xml

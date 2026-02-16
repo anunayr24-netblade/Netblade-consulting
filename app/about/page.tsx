@@ -1,7 +1,20 @@
 'use client'
 
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { useState, useEffect, useRef } from 'react'
+
+export const metadata: Metadata = {
+  title: "About Netblade Consulting | Your Digital Partner",
+  description: "Learn about Netblade Consulting - A team of digital marketing and web development experts committed to helping businesses grow. 500+ clients, 1000+ projects delivered.",
+  keywords: "about netblade, digital marketing experts, web development team, business consulting experience, why choose netblade, company values, proven results",
+  openGraph: {
+    title: "About Netblade Consulting",
+    description: "Discover our expertise in digital marketing and web development",
+    type: "website",
+    url: "https://netbladeconsulting.in/about",
+  },
+};
 
 export default function AboutPage() {
   const [currentSlide, setCurrentSlide] = useState(0)

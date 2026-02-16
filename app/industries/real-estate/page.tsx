@@ -1,8 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+
+export const metadata: Metadata = {
+  title: "Real Estate Marketing Services | Website Design & Digital Marketing",
+  description: "Digital marketing and web design for real estate agents and brokers. SEO, Google Ads, social media marketing, property website development. Increase inquiries and leads.",
+  keywords: "real estate marketing, real estate website, property marketing, real estate SEO, real estate digital marketing, real estate advertising, property listing website",
+  openGraph: {
+    title: "Real Estate Marketing & Website Services",
+    description: "Digital marketing solutions specifically designed for real estate professionals",
+    type: "website",
+    url: "https://netbladeconsulting.in/industries/real-estate",
+  },
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },

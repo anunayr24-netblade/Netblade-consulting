@@ -1,7 +1,20 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+
+export const metadata: Metadata = {
+  title: "Contact Netblade Consulting | Get Free Consultation",
+  description: "Get in touch with Netblade Consulting for digital marketing, web development, and business services. Free consultation available. Contact us today!",
+  keywords: "contact netblade, get in touch, free consultation, digital marketing services contact, web development quote, business consulting help",
+  openGraph: {
+    title: "Contact Us - Netblade Consulting",
+    description: "Reach out to us for your digital marketing and web development needs",
+    type: "website",
+    url: "https://netbladeconsulting.in/contact",
+  },
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },

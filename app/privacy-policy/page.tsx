@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - Netblade Consulting",
+  description: "Privacy policy for Netblade Consulting. Learn how we collect, use, and protect your personal information.",
+  keywords: "privacy policy, data protection, privacy statement",
+  openGraph: {
+    title: "Privacy Policy",
+    description: "Privacy policy information",
+    type: "website",
+    url: "https://netbladeconsulting.in/privacy-policy",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div>

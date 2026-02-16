@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Disclaimer - Netblade Consulting",
+  description: "Disclaimer for Netblade Consulting. Important information about our services and their use.",
+  keywords: "disclaimer, legal disclaimer, service disclaimer",
+  openGraph: {
+    title: "Disclaimer",
+    description: "Disclaimer information",
+    type: "website",
+    url: "https://netbladeconsulting.in/disclaimer",
+  },
+};
+
 export default function DisclaimerPage() {
   return (
     <div>

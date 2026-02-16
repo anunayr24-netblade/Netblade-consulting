@@ -61,15 +61,15 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start space-x-3">
                 <span className="text-blue-400 text-xl">📧</span>
-                <span>info@netbladeconsulting.com</span>
+                <span>Info@netbladeconsulting.in</span>
               </li>
               <li className="flex items-start space-x-3">
                 <span className="text-green-400 text-xl">📞</span>
-                <span>+91-XXXXXXXXXX</span>
+                <span>+91-9611061413</span>
               </li>
               <li className="flex items-start space-x-3">
-                <span className="text-purple-400 text-xl">🌍</span>
-                <span>India</span>
+                <span className="text-purple-400 text-xl">📍</span>
+                <span>E-305 Aura Chimera<br/>Rajnagar extension,<br/>Ghaziabad</span>
               </li>
             </ul>
           </div>
