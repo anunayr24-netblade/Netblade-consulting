@@ -1,20 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import { useState, useEffect, useRef } from 'react'
-
-export const metadata: Metadata = {
-  title: "SEO Services | Search Engine Optimization | Rank Higher on Google",
-  description: "Professional SEO services to rank your website higher on Google. Keyword research, on-page SEO, technical SEO, link building, and local SEO. Proven results for businesses.",
-  keywords: "SEO services, search engine optimization, organic traffic, keyword research, on-page SEO, technical SEO, link building, local SEO, Google ranking",
-  openGraph: {
-    title: "SEO Services - Rank on Google",
-    description: "Professional SEO services to increase organic traffic and rankings",
-    type: "website",
-    url: "https://netbladeconsulting.in/services/digital-marketing/seo",
-  },
-};
 
 export default function SEOPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)

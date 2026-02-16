@@ -1,20 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import { useState, useEffect, useRef } from 'react'
-
-export const metadata: Metadata = {
-  title: "Digital Marketing Services | SEO, PPC, Social Media Marketing",
-  description: "Comprehensive digital marketing solutions - SEO, Google Ads, social media marketing, content marketing, email marketing, lead generation, and more. Flexible pricing plans available.",
-  keywords: "digital marketing services, SEO agency, Google Ads management, social media marketing, PPC advertising, content marketing, email marketing, lead generation, digital transformation",
-  openGraph: {
-    title: "Digital Marketing Services - Grow Your Business Online",
-    description: "Full-stack digital marketing solutions including SEO, ads, social media, and content strategy",
-    type: "website",
-    url: "https://netbladeconsulting.in/services/digital-marketing",
-  },
-};
 
 export default function DigitalMarketingPage() {
   const [expandedService, setExpandedService] = useState<string | null>('seo')

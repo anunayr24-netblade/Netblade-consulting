@@ -1,22 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import Carousel from '@/components/Carousel'
 import { motion, useInView, type Variants } from 'framer-motion'
 import { useRef } from 'react'
-
-export const metadata: Metadata = {
-  title: "Netblade Consulting | Website Development & Digital Marketing Services",
-  description: "Leading digital marketing and web development agency. Expert SEO, Google Ads, social media marketing, and website services for startups and businesses in India.",
-  keywords: "digital marketing agency, website development, SEO services, Google Ads, social media marketing, web design, business consulting, digital transformation India",
-  openGraph: {
-    title: "Netblade Consulting - Grow Your Business Digitally",
-    description: "Expert digital marketing and web development services for startups and enterprises.",
-    type: "website",
-    url: "https://netbladeconsulting.in",
-  },
-};
 
 // Animation variants
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1]

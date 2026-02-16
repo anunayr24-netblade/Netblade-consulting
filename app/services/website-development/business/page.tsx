@@ -1,20 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import { useState, useEffect, useRef } from 'react'
-
-export const metadata: Metadata = {
-  title: "Business Website Development | Custom Web Design & Development",
-  description: "Professional business website development services. Custom web design, responsive websites, fast loading, secure & SEO-optimized. Perfect for startups and growing businesses.",
-  keywords: "website development, web design, custom website, business website, responsive design, website development services, web development company India",
-  openGraph: {
-    title: "Business Website Development Services",
-    description: "Custom, responsive, and conversion-optimized business websites",
-    type: "website",
-    url: "https://netbladeconsulting.in/services/website-development/business",
-  },
-};
 
 export default function BusinessWebsitePage() {
   const [flippedCards, setFlippedCards] = useState<{ [key: string]: boolean }>({})
