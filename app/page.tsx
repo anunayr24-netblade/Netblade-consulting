@@ -491,6 +491,18 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
           </motion.div>
+
+          {/* View All Services Button */}
+          <motion.div 
+            className="text-center mt-16"
+            initial="hidden"
+            animate={servicesInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+          >
+            <Link href="/services" className="btn-primary text-lg px-8 py-4 inline-block">
+              View All Services →
+            </Link>
+          </motion.div>
         </div>
       </section>
 

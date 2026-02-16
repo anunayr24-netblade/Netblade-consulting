@@ -39,7 +39,10 @@ export default function Navbar() {
               </button>
               <div className="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-2">
-                  <div className="mb-2">
+                  <Link href="/services" className="block px-4 py-3 hover:bg-blue-50 font-semibold text-blue-600 border-b-2 border-blue-200">
+                    📋 View All Services
+                  </Link>
+                  <div className="mb-2 mt-2">
                     <h3 className="font-bold text-primary px-3 py-2">Website Development</h3>
                     <Link href="/services/website-development/business" className="block px-4 py-2 hover:bg-gray-50 text-sm">Business Website Development</Link>
                     <Link href="/services/website-development/real-estate" className="block px-4 py-2 hover:bg-gray-50 text-sm">Real Estate Websites</Link>
@@ -119,6 +122,7 @@ export default function Navbar() {
           <div className="lg:hidden py-4 border-t">
             <Link href="/" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Home</Link>
             <Link href="/about" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">About Us</Link>
+            <Link href="/services" className="block py-2 text-gray-800 hover:text-blue-600 font-bold text-blue-600">📋 All Services</Link>
             <Link href="/services/website-development/business" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Website Development</Link>
             <Link href="/services/digital-marketing/seo" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Digital Marketing</Link>
             <Link href="/services/financial/registrations" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Financial Services</Link>
