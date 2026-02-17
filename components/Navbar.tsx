@@ -123,6 +123,8 @@ export default function Navbar() {
           </button>
         </div>
 
+        {/* Mobile Menu */}
+        {isOpen && (
           <div className="lg:hidden py-4 border-t">
             <Link href="/" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Home</Link>
             <Link href="/about" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">About Us</Link>
