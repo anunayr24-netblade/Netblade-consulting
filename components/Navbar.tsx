@@ -29,6 +29,12 @@ export default function Navbar() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
+            {/* Blog */}
+            <Link href="/blog" className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold relative group">
+              Blog
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+
             {/* Services Dropdown */}
             <div className="relative group">
               <button className="text-gray-800 hover:text-blue-600 transition-colors duration-300 font-bold flex items-center">
@@ -117,11 +123,10 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
           <div className="lg:hidden py-4 border-t">
             <Link href="/" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Home</Link>
             <Link href="/about" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">About Us</Link>
+            <Link href="/blog" className="block py-2 text-gray-800 hover:text-blue-600 font-bold">Blog</Link>
             <Link href="/services" className="block py-2 text-gray-800 hover:text-blue-600 font-bold text-blue-600">📋 All Services</Link>
             <Link href="/services/website-development/business" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Website Development</Link>
             <Link href="/services/digital-marketing/seo" className="block py-2 text-gray-800 hover:text-blue-600 font-semibold pl-4">Digital Marketing</Link>
