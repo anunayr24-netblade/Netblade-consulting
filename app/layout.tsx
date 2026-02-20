@@ -57,6 +57,13 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Ahrefs Web Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="gD2WzLIIiy1HcYChOrvEzA"
+          async
+          strategy="afterInteractive"
+        />
       </head>
       <body className="antialiased">
         <Navbar />
